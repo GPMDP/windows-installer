@@ -71,4 +71,4 @@ if (fs.existsSync(zipPath)) {
       console.error('An error occurred while fetching the vendor files:', err);
       process.exit(1);
     });
-  }
+}
