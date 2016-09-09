@@ -13,6 +13,7 @@
     "prepublish": "npm run test && npm run compile",
     "postinstall": "node lib/fetch-vendor.js",
     "lint": "eslint src & eslint spec",
+    "pretest": "npm run compile && node lib/fetch-vendor.js",
     "test": "npm run lint && ava",
     "tdd": "ava --watch"
   },
