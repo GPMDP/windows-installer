@@ -1,5 +1,5 @@
 {
-  "name": "@GPMDP/electron-winstaller",
+  "name": "@gpmdp/electron-winstaller",
   "version": "1.0.0",
   "description": "Module to generate Windows installers for Electron apps",
   "main": "./lib/index.js",
