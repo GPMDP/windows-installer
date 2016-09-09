@@ -1,6 +1,6 @@
 {
-  "name": "electron-winstaller",
-  "version": "2.3.4",
+  "name": "@GPMDP/electron-winstaller",
+  "version": "1.0.0",
   "description": "Module to generate Windows installers for Electron apps",
   "main": "./lib/index.js",
   "license": "MIT",
@@ -11,6 +11,7 @@
   "scripts": {
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run test && npm run compile",
+    "postinstall": "node lib/fetch-vendor.js",
     "lint": "eslint src & eslint spec",
     "test": "npm run lint && ava",
     "tdd": "ava --watch"
@@ -19,9 +20,12 @@
     "asar": "^0.11.0",
     "bluebird": "^3.3.4",
     "debug": "^2.2.0",
+    "follow-redirects": "^0.2.0",
     "fs-extra": "^0.26.7",
     "lodash.template": "^4.2.2",
-    "temp": "^0.8.3"
+    "node-fetch": "^1.6.0",
+    "temp": "^0.8.3",
+    "unzip": "^0.1.11"
   },
   "devDependencies": {
     "ava": "^0.13.0",
