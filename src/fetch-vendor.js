@@ -5,10 +5,11 @@ import path from 'path';
 import unzip from 'unzip';
 
 const vendorDir = path.resolve(__dirname, '..', 'vendor');
-const VENDOR_TAG = '2.0.0';
-const zipPath = path.resolve(vendorDir, `artifacts_${VENDOR_TAG}.zip`);
+// const VENDOR_TAG = '2.0.0';
+const VENDOR_SHA = '60c0c2c47d8e262c0705e734d766218d1c4863c6';
+const zipPath = path.resolve(vendorDir, `artifacts_${VENDOR_SHA}.zip`);
 
-let tag;
+// let tag;
 let build;
 let job;
 
@@ -30,22 +31,22 @@ if (fs.existsSync(zipPath)) {
   });
 } else {
   console.log('Fetching tags from GitHub');
-  fetch('https://api.github.com/repos/GPMDP/Squirrel.Windows/tags')
-    .then((r) => r.json())
-    .then((tags) => {
-      tag = tags.find((tag) => tag.name === VENDOR_TAG);
-      if (!tag) {
-        console.error('Could not find tagged version:', VENDOR_TAG);
-        process.exit(1);
-      }
-      console.log('Found tag with commit:', tag.commit.sha);
-      return fetch('https://ci.appveyor.com/api/projects/MarshallOfSound/squirrel-windows/history?recordsNumber=1000');
-    })
+  // fetch('https://api.github.com/repos/GPMDP/Squirrel.Windows/tags')
+  //   .then((r) => r.json())
+  //   .then((tags) => {
+  //     tag = tags.find((tag) => tag.name === VENDOR_TAG);
+  //     if (!tag) {
+  //       console.error('Could not find tagged version:', VENDOR_TAG);
+  //       process.exit(1);
+  //     }
+  //     console.log('Found tag with commit:', tag.commit.sha);
+  fetch('https://ci.appveyor.com/api/projects/MarshallOfSound/squirrel-windows/history?recordsNumber=1000')
+    // })
     .then((r) => r.json())
     .then((history) => {
-      build = history.builds.find((build) => build.commitId === tag.commit.sha);
+      build = history.builds.find((build) => build.commitId === VENDOR_SHA);
       if (!build) {
-        console.error('Could not find build for commit:', tag.commit.sha);
+        console.error('Could not find build for commit:', VENDOR_SHA);
         process.exit(1);
       }
       console.log('Found build with version:', build.version);
