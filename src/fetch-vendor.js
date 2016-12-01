@@ -6,7 +6,7 @@ import unzip from 'unzip';
 
 const vendorDir = path.resolve(__dirname, '..', 'vendor');
 // const VENDOR_TAG = '2.0.0';
-const VENDOR_SHA = '60c0c2c47d8e262c0705e734d766218d1c4863c6';
+const VENDOR_SHA = '273b2c556e84dd278047b6f71dd7d23914413644';
 const zipPath = path.resolve(vendorDir, `artifacts_${VENDOR_SHA}.zip`);
 
 // let tag;
